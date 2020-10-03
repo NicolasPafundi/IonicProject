@@ -1,0 +1,13 @@
+{
+  "appId": "com.project.app",
+  "appName": "ionicProject",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

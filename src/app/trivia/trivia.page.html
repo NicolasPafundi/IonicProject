@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color = "secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <div *ngIf="trivia.id != null; else add">
+        <ion-button (click)="deleteTrivia()">
+          <ion-icon style="zoom:1.3;" name="trash" color="danger"></ion-icon>
+        </ion-button>
+      </div>
+      <ng-template #add>
+        <ion-button  (click)="addTrivia()">
+          <ion-icon style="zoom:1.5;" name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </ng-template>
+    </ion-buttons>
+    <ion-title>Trivia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item [innerHTML] = 'trivia.question'>
+      {{trivia.question}}
+    </ion-item>
+
+    <ion-radio-group [(ngModel)]="answer">
+      <ion-item *ngFor="let option of trivia.incorrectAnswers">
+        <ion-label [innerHTML] = 'option'>{{option}}</ion-label>
+        <ion-radio name="asmwer" [value]="option"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="secondary" (click)="checkAsnwer()">
+        Submit
+      </ion-fab-button>
+    </ion-fab>
+
+    <div *ngIf="trivia.id == unnasigned;">
+      <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button color="secondary" (click)="getRandomTrivia()">
+          <ion-icon name="reload-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+    
+    
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color = "secondary">
+    <ion-title>
+      My List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="trivias.length > 0; else noTrivias">
+    <ion-item *ngFor = "let trivia of trivias" [routerLink]="['/trivia', trivia.id]">
+      <ion-text [innerHTML] = 'trivia.question'>
+        {{trivia.question}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+  <ng-template #noTrivias>
+    <ion-text>
+      <p class ="ion-text-center">Empty List...</p>
+    </ion-text>
+  </ng-template>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" [routerLink]="['/trivia']">
+      <ion-icon name="add">
+      </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
